@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Bug Fixes
+
+* **xiaohongshu** — `publish --topics` no longer leaves bare `#` characters with no linked topic. The dropdown lives inside a closed shadow root so the previous light-DOM lookup never saw any suggestion items, and the postcondition check looked for `<a>` topic entities that are also rendered inside the same shadow root. The adapter now types `#<topic>` via `page.insertText`, accepts the auto-highlighted suggestion with `page.pressKey('Enter')`, and verifies the chip via the `"#<topic>[话题]"` marker that XHS exposes in the editor's innerText.
+
 ## [1.8.2](https://github.com/jackwener/opencli/compare/v1.8.1...v1.8.2) (2026-06-03)
 
 Mid-cycle release: introduces the **Site Maps Hub** subsystem (agent-facing per-site navigation knowledge), restores the **smart-search** skill, and ships a wide batch of new adapters / commands plus a long tail of read-path fixes. Extension bumped to 1.0.18 for an owned-group reusable-tab scope fix.
